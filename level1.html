@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level 1</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <h1>Level 1</h1>
+  <p>Willkommen zu Level 1!</p>
+  <img src="images/level1.jpg" alt="Level 1 Bild">
+  <button id="nextLevelButton">Zum nächsten Level</button>
+
+  <script>
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.register(
+          '/Adventure/sw.js',
+          {scope: '/Adventure/'}
+        )
+      }
+      // Event Listener für den Button
+      document.getElementById('nextLevelButton').addEventListener('click', function() {
+        window.location.href = 'level2.html';
+      });
+  </script>
+  <script src="js/app.js"></script>
+</body>
+</html>
