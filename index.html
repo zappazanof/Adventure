@@ -11,11 +11,12 @@
 <body>
  
   <h1>Adventure Kalender 2024</h1>
+  <button id="level1Button">Level 1 öffnen
   <p>
     Das ist der Anfang einer epischen geschichte 
     <a href="https://github.com/zappazanof/Adventure/">https://github.com/zappazanof/Adventure/</a> juhu
   </p>
-
+  <button id="myButton">Klicke mich!</button>
   <script>
       if (navigator.serviceWorker) {
         navigator.serviceWorker.register (
@@ -23,6 +24,8 @@
           {scope: '/Adventure/'}
         )
       }
+    // Event Listener für den Button 
+    document.getElementById('level1Button').addEventListener('click', function() { window.location.href = 'level1.html';})
   </script>
   <script src="js/app.js"></script>
 </body>
