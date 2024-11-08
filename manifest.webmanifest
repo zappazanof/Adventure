@@ -4,8 +4,8 @@
   "description": "Adventure Kalender für den Advent 2024",
   "scope": "/Adventure/",
   "start_url": "/Adventure/",
-  "background_color": "#0000B4",
-  "theme_color": "#0000B4",
+  "background_color": "#00008B",
+  "theme_color": "#00008B",
   "display": "standalone", 
   "icons": [
       {
