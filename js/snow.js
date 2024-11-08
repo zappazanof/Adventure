@@ -1,18 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
   const snowflakeContainer = document.getElementById('snowflakes');
   const snowflakeCount = 100;
-  
+
+  // Check if it's the first page load
+  const isFirstLoad = !localStorage.getItem('snowflakesLoadedBefore');
+
   for (let i = 0; i < snowflakeCount; i++) {
     const snowflake = document.createElement('div');
     snowflake.classList.add('snowflake');
     snowflake.textContent = '❄';
-    
+
     snowflake.style.left = `${Math.random() * 100}vw`;
-    snowflake.style.top = `${Math.random() * 100}vh`; // Zufällige Höhe
-    snowflake.style.animationDuration = `${Math.random() * 7 + 6}s`; // 7 bis 13 Sekunden
-    snowflake.style.fontSize = `${Math.random() * 2 + 1}em`; // 1 bis 3 em
+    if (isFirstLoad) {
+      snowflake.style.top = `${Math.random() * 100}vh`; // Random height
+    } else {
+      snowflake.style.top = '0'; // Only at the top
+    }
+    snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`; // 5 to 10 seconds
+    snowflake.style.fontSize = `${Math.random() * 2 + 1}em`; // 1 to 3 em
     snowflake.style.opacity = Math.random().toString();
 
     snowflakeContainer.appendChild(snowflake);
   }
+
+  // Set the flag in localStorage
+  localStorage.setItem('snowflakesLoadedBefore', true);
 });
