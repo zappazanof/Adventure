@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       snowflake.style.top = '0'; // Only at the top
     }
-    snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`; // 5 to 10 seconds
+    snowflake.style.animationDuration = `${Math.random() * 7 + 6}s`; // 6 to 13 seconds
     snowflake.style.fontSize = `${Math.random() * 2 + 1}em`; // 1 to 3 em
     snowflake.style.opacity = Math.random().toString();
 
