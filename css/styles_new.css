@@ -1,5 +1,5 @@
 body {
-  background-color: #00008B; /* Dunkelblau */
+  background: linear-gradient(to bottom, #00008B, #000000); /* Dunkelblau */
   font-family: Arial, sans-serif;
   color: white; /* Weiße Schriftfarbe für besseren Kontrast */
   overflow: hidden; /* Verhindert Scrollen */
