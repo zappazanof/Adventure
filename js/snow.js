@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const snowflakeContainer = document.getElementById('snowflakes');
-  const snowflakeCount = 100;
+  const snowflakeCount = 200;
 
   // Check if it's the first page load
   const isFirstLoad = !localStorage.getItem('snowflakesLoadedBefore');
