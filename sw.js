@@ -1,6 +1,6 @@
 var GHPATH = '/Adventure';
 var APP_PREFIX = 'Adventure24';
-var VERSION = 'version_005';
+var VERSION = 'version_006';
 var URLS = [    
   `${GHPATH}/`,
   `${GHPATH}/index.html`,
