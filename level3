@@ -9,8 +9,9 @@
 <body>
   <h1>Tag 3</h1>
   <p>Willkommen zu Level 2!</p>
-  //<img src="images/level2.jpg" alt="Level 2 Bild">
-  <button id="previousLevelButton">Zum vorherigen Level</button>
+  <!-- //<img src="images/level2.jpg" alt="Level 2 Bild"> -->
+  <button class="levelButton" data-level="1">Tag 1</button> 
+  <button id="previousLevelButton">Zur Übersicht</button>
 
   <script>
       if (navigator.serviceWorker) {
