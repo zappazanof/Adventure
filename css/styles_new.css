@@ -2,7 +2,7 @@ body {
   height: 100%; 
   margin: 0; 
   padding: 0;
-  background: linear-gradient(to bottom, #00008B, #000000); /* Dunkelblau */
+  background: linear-gradient(to bottom, #ffffff, #000000); /* Dunkelblau */
   font-family: Arial, sans-serif;
   color: white; /* Weiße Schriftfarbe für besseren Kontrast */
   overflow: hidden; /* Verhindert Scrollen */
