@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   // Event Listener für alle levelButton
   const levelButtons = document.querySelectorAll('.levelButton');
   const calendar = document.getElementById('calendar');
+  const backButton = document.getElementById('backButton');
 
   // Funktion zum Zufällig Anordnen der Buttons
   function shuffle(array) {
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       });
     });
   }
+  if (backButton) { backButton.addEventListener('click', () => { window.location.href = 'index.html'; }); }
 
   // Initial arrangement of buttons
   arrangeAndAttachListeners(levelButtons);
