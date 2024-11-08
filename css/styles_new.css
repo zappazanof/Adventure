@@ -17,27 +17,28 @@ h1 {
 
 .calendar {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 6 Spalten */
+  grid-template-columns: repeat(4, 1fr); /* 4 Spalten */
   grid-gap: 10px;
   padding: 10px;
 }
 
 .levelButton {
   background-color: #ff0000; /* Rotes Hintergrund */
-  color: white; /* Weiße Schriftfarbe */
-  border: 2px solid gold; /* Goldener Rand */
-  border-radius: 50%; /* Runde Ecken */
+  color: gold; /* Weiße Schriftfarbe */
+  border: 5px solid gold; /* Goldener Rand */
+  border-radius: 15px; /* Runde Ecken */
   padding: 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
   cursor: pointer;
-  transition: background-color 0.3s; /* Glatter Übergang */
+  transition: background-color 0.3s, transform 0.3s; /* Glatter Übergang */
 }
 
 .levelButton:hover {
   background-color: #00cc00; /* Grüner Hintergrund beim Hover */
+  transform: scale(1.1); /* Leichtes Vergrößern beim Hover */
 }
 
 #snowflakes {
