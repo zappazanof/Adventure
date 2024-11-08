@@ -15,12 +15,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
   // Buttons in zufälliger Reihenfolge anordnen
   const shuffledButtons = shuffle(Array.from(levelButtons));
   calendar.innerHTML = '';
-  shuffled
-  
+  shuffledButtons.forEach(button => calendar.appendChild(button));
+
+  // Add click event listener to each button
   levelButtons.forEach(button => {
     button.addEventListener('click', () => {
       const level = button.getAttribute('data-level');
-      window.location.href = `level${level}.html`;
+      window.location.href = `level${level}.html`; 
     });
   });
 });
