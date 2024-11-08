@@ -53,6 +53,24 @@ h1 {
   transform: scale(1.1); /* Leichtes Vergrößern beim Hover */
 }
 
+#backButton {
+  position: fixed;
+  bottom: 20px; /* Abstand vom unteren Rand */
+  left: 50%;
+  transform: translateX(-50%); /* Zentriert den Button horizontal */
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#backButton:hover {
+  background-color: #0056b3; /* Dunklere Farbe bei Hover */
+}
+
 #snowflakes {
   position: absolute;
   top: 0;
