@@ -16,13 +16,13 @@
   <button id="level1Button">  1  
   <div id="snowflakes"></div> <!-- Container für Schneeflocken -->
  <!--
-    <script>
-      if (navigator.serviceWorker) {
-        navigator.serviceWorker.register (
-          '/Adventure/sw.js',
-          {scope: '/Adventure/'}
-        )
-      }
+  <script>
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register (
+         '/Adventure/sw.js',
+        {scope: '/Adventure/'}
+      )
+    }
   -->
     // Event Listener für den Button 
     document.getElementById('level1Button').addEventListener('click', function() { window.location.href = 'level1.html';})
