@@ -17,9 +17,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   calendar.innerHTML = '';
   shuffled
   
-  // Event Listener für alle Level-Buttons
-  const levelButtons = document.querySelectorAll('.levelButton');
-  
   levelButtons.forEach(button => {
     button.addEventListener('click', () => {
       const level = button.getAttribute('data-level');
