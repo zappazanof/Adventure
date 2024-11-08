@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     snowflake.textContent = '❄';
     
     snowflake.style.left = `${Math.random() * 100}vw`;
-    snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`; // 2 bis 5 Sekunden
+    snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`; // 5 bis 10 Sekunden
     snowflake.style.fontSize = `${Math.random() * 2 + 1}em`; // 1 bis 3 em
     snowflake.style.opacity = Math.random().toString();
 
