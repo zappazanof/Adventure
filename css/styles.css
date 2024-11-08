@@ -1,7 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-    background-color: #fff;
+    color: white;
+    background-color: #00008B; /* Dunkelblau */
     margin: 0;
     padding: 2em;
     height: 90vh;
@@ -9,10 +9,17 @@ body {
     background-size: 20vh;
 }
 h1 {
+    color:#ffffff; /*weiße Schriftfarbe/*
     font-size: 1.5em;
     font-weight: normal;
     margin: 0;
     padding: 0;
+}
+.description 
+{ 
+    color: #cccccc; /* Hellgraue Schriftfarbe */ 
+    padding: 10px; 
+    background-color: #333333; /* Dunkelgrauer Hintergrund */ 
 }
 p {
     width: 80vw;
