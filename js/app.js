@@ -25,7 +25,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
       });
     });
   }
-  if (backButton) { backButton.addEventListener('click', () => { window.location.href = 'index.html'; }); }
+  if (backButton) { 
+    backButton.addEventListener('click', () => { 
+      window.location.href = 'index.html'; 
+    }); 
+  }
 
   // Initial arrangement of buttons
   arrangeAndAttachListeners(levelButtons);
