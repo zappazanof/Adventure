@@ -41,6 +41,16 @@ h1 {
   background-color: #00cc00; /* Grüner Hintergrund beim Hover */
   transform: scale(1.1); /* Leichtes Vergrößern beim Hover */
 }
+#storyContainer { 
+  font-size: 20px; 
+  line-height: 1.5; 
+  margin: 20px; 
+  white-space: pre-wrap; 
+  color: #FFFFFF; /* Setzt die Textfarbe auf Weiß */ 
+  background-color: #00008B; /* Setzt die Hintergrundfarbe auf Dunkelblau */ 
+  padding: 20px; /* Fügt etwas Innenabstand hinzu */ 
+  border-radius: 10px; /* Fügt abgerundete Ecken hinzu */ 
+}
 
 #backButton {
   position: fixed;
