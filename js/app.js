@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', (event) => {
+  localStorage.setItem('snowflakesLoadedBefore', false);
   const levelButtons = document.querySelectorAll('.levelButton');
   const calendar = document.getElementById('calendar');
   const backButton = document.getElementById('backButton');
   const nextButton = document.getElementById('nextButton');
   const storyContainer = document.getElementById('storyContainer');
+  
 
   // Funktion zum Zufällig Anordnen der Buttons
   function shuffle(array) {
