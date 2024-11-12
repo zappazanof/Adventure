@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   function typeWriter(text, index, callback) {
     if (index < text.length) {
       storyContainer.innerHTML += text.charAt(index);
-      setTimeout(() => typeWriter(text, index + 1, callback), 50);
+      setTimeout(() => typeWriter(text, index + 1, callback), 35);
     } else {
       callback();
     }
