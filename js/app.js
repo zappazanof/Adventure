@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-  // Event Listener für alle levelButton
   const levelButtons = document.querySelectorAll('.levelButton');
   const calendar = document.getElementById('calendar');
   const backButton = document.getElementById('backButton');
@@ -33,22 +32,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
       typeWriter(storyParts[window.currentPart], 0, () => {
         window.currentPart++;
         if (window.currentPart < storyParts.length) {
-          nextButton.style.display = 'block'; // Zeige den Button nach dem aktuellen Abschnitt an
+          if (nextButton) {
+            nextButton.style.display = 'block'; // Zeige den Button nach dem aktuellen Abschnitt an
+          }
         } else {
-          nextButton.style.display = 'none'; // Verstecke den Button, wenn alle Abschnitte angezeigt wurden
+          if (nextButton) {
+            nextButton.style.display = 'none'; // Verstecke den Button, wenn alle Abschnitte angezeigt wurden
+          }
         }
       });
     }
   }
 
-  nextButton.addEventListener('click', () => {
-    nextButton.style.display = 'none'; // Verstecke den Button, während der nächste Abschnitt angezeigt wird
-    showNextPart();
-  });
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      console.log('Next button clicked'); // Debug-Ausgabe
+      nextButton.style.display = 'none'; // Verstecke den Button, während der nächste Abschnitt angezeigt wird
+      showNextPart();
+    });
+  }
 
-  backButton.addEventListener('click', () => {
-    window.location.href = 'index.html';
-  });
+  if (backButton) {
+    backButton.addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+  }
 
   // Initial arrangement of buttons
   function arrangeAndAttachListeners(buttons) {
@@ -57,13 +65,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     shuffledButtons.forEach(button => {
       calendar.appendChild(button);
       button.addEventListener('click', () => {
+        console.log(`Button ${button.getAttribute('data-level')} clicked`); // Debug-Ausgabe
         const level = button.getAttribute('data-level');
-        window.location.href = `level${level}.html`; 
+        window.location.href = `level${level}.html`;
       });
     });
   }
 
   arrangeAndAttachListeners(levelButtons); // Initial arrangement of buttons
-  showNextPart(); // Zeige den ersten Abschnitt beim Laden der Seite
-});
 
+  if (storyContainer) {
+    showNextPart(); // Zeige den ersten Abschnitt beim Laden der Seite
+  }
+});
