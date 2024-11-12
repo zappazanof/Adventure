@@ -24,5 +24,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Set the flag in localStorage
-  localStorage.setItem('snowflakesLoadedBefore', true);
+  localStorage.setItem('snowflakesLoadedBefore', false);
 });
