@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isFirstLoad) {
       snowflake.style.top = `${Math.random() * 100}vh`; // Random height
     } else {
-      snowflake.style.top = `${Math.random() * 100}vh`; // Only at the top
+      snowflake.style.top = `${Math.random() * 10}vh`; // Only at the top
     }
     snowflake.style.animationDuration = `${Math.random() * 7 + 6}s`; // 6 to 13 seconds
     snowflake.style.fontSize = `${Math.random() * 2 + 1}em`; // 1 to 3 em
