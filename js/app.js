@@ -61,15 +61,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
   // Initial arrangement of buttons
   function arrangeAndAttachListeners(buttons) {
     const shuffledButtons = shuffle(Array.from(buttons));
-    calendar.innerHTML = '';
-    shuffledButtons.forEach(button => {
-      calendar.appendChild(button);
-      button.addEventListener('click', () => {
-        console.log(`Button ${button.getAttribute('data-level')} clicked`); // Debug-Ausgabe
-        const level = button.getAttribute('data-level');
-        window.location.href = `level${level}.html`;
+    if (calendar) {
+      calendar.innerHTML = '';
+      shuffledButtons.forEach(button => {
+        calendar.appendChild(button);
+        button.addEventListener('click', () => {
+          console.log(`Button ${button.getAttribute('data-level')} clicked`); // Debug-Ausgabe
+          const level = button.getAttribute('data-level');
+          window.location.href = `level${level}.html`;
+        });
       });
-    });
+    }
   }
 
   arrangeAndAttachListeners(levelButtons); // Initial arrangement of buttons
