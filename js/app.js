@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const calendar = document.getElementById('calendar');
   const backButton = document.getElementById('backButton');
   const nextButton = document.getElementById('nextButton');
+  const storyContainer = document.getElementById('storyContainer');
 
   // Funktion zum Zufällig Anordnen der Buttons
   function shuffle(array) {
@@ -13,8 +14,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     return array;
   }
+
   function typeWriter(text, index, callback) {
-    const storyContainer = document.getElementById('storyContainer');
     if (index < text.length) {
       storyContainer.innerHTML += text.charAt(index);
       setTimeout(() => typeWriter(text, index + 1, callback), 100);
@@ -25,7 +26,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   function showNextPart() {
     const storyParts = window.storyParts || []; // Greift auf die storyParts im jeweiligen Level-Skript zu
-    const storyContainer = document.getElementById('storyContainer');
     if (window.currentPart === undefined) window.currentPart = 0;
 
     if (window.currentPart < storyParts.length) {
@@ -50,11 +50,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     window.location.href = 'index.html';
   });
 
-  // Zeige den ersten Abschnitt beim Laden der Seite
-  showNextPart();
-
-
-  // Buttons in zufälliger Reihenfolge anordnen und Event Listener hinzufügen
+  // Initial arrangement of buttons
   function arrangeAndAttachListeners(buttons) {
     const shuffledButtons = shuffle(Array.from(buttons));
     calendar.innerHTML = '';
@@ -67,7 +63,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
   }
 
-
-  // Initial arrangement of buttons
-  arrangeAndAttachListeners(levelButtons);
+  arrangeAndAttachListeners(levelButtons); // Initial arrangement of buttons
+  showNextPart(); // Zeige den ersten Abschnitt beim Laden der Seite
 });
+
