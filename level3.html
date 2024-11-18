@@ -15,8 +15,8 @@
         }
         .circle-container {
             position: relative;
-            width: 200px;
-            height: 200px;
+            width: 300px;
+            height: 300px;
             margin: 0 auto 20px;
         }
         .circle {
@@ -28,13 +28,25 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             overflow: hidden;
         }
+        #circle2 {
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+        }
+        #circle3 {
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+        }
         .segment {
             position: absolute;
             width: 100%;
             height: 100%;
             transform-origin: center;
             text-align: center;
-            line-height: 200px;
+            line-height: 150px; /* Adjusted for better centering in smaller circles */
             font-size: 24px;
         }
         .symbol {
@@ -100,44 +112,4 @@
                 const angle = i * 30;
                 const segment = document.createElement('div');
                 segment.className = 'segment';
-                segment.style.transform = `rotate(${angle}deg) translate(0, -100px)`;
-                const symbol = document.createElement('div');
-                symbol.className = 'symbol';
-                symbol.innerText = symbols[i];
-                symbol.style.transform = `rotate(${angle}deg)`;
-                segment.appendChild(symbol);
-                circle.appendChild(segment);
-            }
-        }
-
-        function rotateCircle(circleNumber, direction) {
-            const circle = document.getElementById(`circle${circleNumber}`);
-            const segments = circle.querySelectorAll('.segment');
-            const angle = direction === 'left' ? 30 : -30;
-
-            segments.forEach(segment => {
-                const currentRotation = segment.style.transform.match(/rotate\((\d+)deg\) translate/);
-                const newRotation = (parseInt(currentRotation[1]) + angle) % 360;
-                segment.style.transform = `rotate(${newRotation}deg) translate(0, -100px)`;
-            });
-        }
-
-        function checkCombination() {
-            const circles = [document.getElementById('circle1'), document.getElementById('circle2'), document.getElementById('circle3')];
-            const combination = circles.map(circle => {
-                const symbol = circle.querySelector('.segment[style*="rotate(0deg)"] .symbol');
-                return symbol ? symbol.innerText : null;
-            });
-
-            const correct = combination.every((symbol, index) => symbol === correctCombination[index]);
-            document.getElementById('message').innerText = correct ? "Korrekte Kombination! Die Kiste öffnet sich." : "Falsche Kombination. Versuche es erneut.";
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            createCircle('circle1');
-            createCircle('circle2');
-            createCircle('circle3');
-        });
-    </script>
-</body>
-</html>
+                segment.style.transform = `rotate(${angle}deg) translate(0, -90px)`; // Adjust
