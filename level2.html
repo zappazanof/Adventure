@@ -9,10 +9,18 @@
             text-align: center;
             margin-top: 50px;
         }
-        input[type="number"] {
-            width: 50px;
-            font-size: 24px;
+        .digit-container {
+            display: inline-block;
+            margin: 0 5px;
             text-align: center;
+        }
+        .digit {
+            font-size: 24px;
+            margin: 5px 0;
+        }
+        .arrow {
+            cursor: pointer;
+            user-select: none;
         }
         button {
             margin-top: 20px;
@@ -23,28 +31,55 @@
 <body>
     <div class="lock-container">
         <h1>Zahlenschloss</h1>
-        <div>
-            <input type="number" id="digit1" min="0" max="9">
-            <input type="number" id="digit2" min="0" max="9">
-            <input type="number" id="digit3" min="0" max="9">
-            <input type="number" id="digit4" min="0" max="9">
+        <div class="digit-container">
+            <div class="arrow" onclick="increaseDigit(0)">&#9650;</div>
+            <div class="digit" id="digit0">0</div>
+            <div class="arrow" onclick="decreaseDigit(0)">&#9660;</div>
+        </div>
+        <div class="digit-container">
+            <div class="arrow" onclick="increaseDigit(1)">&#9650;</div>
+            <div class="digit" id="digit1">0</div>
+            <div class="arrow" onclick="decreaseDigit(1)">&#9660;</div>
+        </div>
+        <div class="digit-container">
+            <div class="arrow" onclick="increaseDigit(2)">&#9650;</div>
+            <div class="digit" id="digit2">0</div>
+            <div class="arrow" onclick="decreaseDigit(2)">&#9660;</div>
+        </div>
+        <div class="digit-container">
+            <div class="arrow" onclick="increaseDigit(3)">&#9650;</div>
+            <div class="digit" id="digit3">0</div>
+            <div class="arrow" onclick="decreaseDigit(3)">&#9660;</div>
         </div>
         <button onclick="checkCombination()">Eingeben</button>
         <p id="message"></p>
     </div>
     <script>
+        const correctCombination = [3, 9, 0, 1];
+
+        function increaseDigit(index) {
+            let digit = document.getElementById('digit' + index);
+            let value = parseInt(digit.innerText);
+            value = (value + 1) % 10;
+            digit.innerText = value;
+        }
+
+        function decreaseDigit(index) {
+            let digit = document.getElementById('digit' + index);
+            let value = parseInt(digit.innerText);
+            value = (value - 1 + 10) % 10;
+            digit.innerText = value;
+        }
+
         function checkCombination() {
-            const correctCombination = [3, 9, 0, 1];
-            const inputDigits = [
-                document.getElementById('digit1').value,
-                document.getElementById('digit2').value,
-                document.getElementById('digit3').value,
-                document.getElementById('digit4').value
-            ];
+            let inputDigits = [];
+            for (let i = 0; i < 4; i++) {
+                inputDigits.push(parseInt(document.getElementById('digit' + i).innerText));
+            }
 
             let correct = true;
             for (let i = 0; i < correctCombination.length; i++) {
-                if (correctCombination[i] != inputDigits[i]) {
+                if (correctCombination[i] !== inputDigits[i]) {
                     correct = false;
                     break;
                 }
