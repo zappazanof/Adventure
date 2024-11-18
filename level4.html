@@ -22,7 +22,7 @@
             border: 5px solid #8b4513;
             border-radius: 50%;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
+            overflow: visible; /* Changed to ensure content is visible */
         }
         .segment {
             position: absolute;
@@ -53,7 +53,7 @@
                 const angle = i * 30;
                 const segment = document.createElement('div');
                 segment.className = 'segment';
-                segment.style.transform = `rotate(${angle}deg) translate(0, -110px)`; // Position der Segmente
+                segment.style.transform = `rotate(${angle}deg)`; // Position der Segmente
                 const symbol = document.createElement('div');
                 symbol.className = 'symbol';
                 symbol.innerText = symbols[i];
