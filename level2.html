@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zahlenschloss</title>
     <style>
+        body {
+            background-color: #f3f3f3;
+            font-family: 'Georgia', serif;
+        }
         .lock-container {
             text-align: center;
             margin-top: 50px;
+            background-color: #8b4513;
+            border: 5px solid #654321;
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+            margin: 50px auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
         .digit-container {
             display: inline-block;
@@ -17,20 +28,39 @@
         .digit {
             font-size: 24px;
             margin: 5px 0;
+            background-color: #f0e68c;
+            border: 2px solid #b8860b;
+            padding: 5px 10px;
+            border-radius: 5px;
         }
         .arrow {
             cursor: pointer;
             user-select: none;
+            color: #fff;
         }
         button {
             margin-top: 20px;
             font-size: 18px;
+            background-color: #d2b48c;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #c0a080;
+        }
+        #message {
+            font-size: 16px;
+            color: #fff;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <div class="lock-container">
-        <h1>Zahlenschloss</h1>
+        <h1 style="color: #fff;">Zahlenschloss</h1>
         <div class="digit-container">
             <div class="arrow" onclick="increaseDigit(0)">&#9650;</div>
             <div class="digit" id="digit0">0</div>
