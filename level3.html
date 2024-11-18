@@ -13,11 +13,16 @@
             text-align: center;
             margin-top: 50px;
         }
-        .circle {
+        .circle-container {
             position: relative;
             width: 200px;
             height: 200px;
-            margin: 0 auto;
+            margin: 0 auto 20px;
+        }
+        .circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
             border: 5px solid #8b4513;
             border-radius: 50%;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -34,7 +39,7 @@
         }
         .symbol {
             display: inline-block;
-            transform: rotate(0deg);
+            transform: rotate(-90deg);
         }
         .arrow {
             cursor: pointer;
@@ -65,9 +70,11 @@
 <body>
     <div class="lock-container">
         <h1>Rätsel mit Drehscheiben</h1>
-        <div id="circle1" class="circle"></div>
-        <div id="circle2" class="circle"></div>
-        <div id="circle3" class="circle"></div>
+        <div class="circle-container">
+            <div id="circle1" class="circle"></div>
+            <div id="circle2" class="circle"></div>
+            <div id="circle3" class="circle"></div>
+        </div>
         <div>
             <span class="arrow" onclick="rotateCircle(1, 'left')">&#9664;</span>
             <span class="arrow" onclick="rotateCircle(1, 'right')">&#9654;</span>
@@ -90,12 +97,14 @@
         function createCircle(elementId) {
             const circle = document.getElementById(elementId);
             for (let i = 0; i < 12; i++) {
+                const angle = i * 30;
                 const segment = document.createElement('div');
                 segment.className = 'segment';
-                segment.style.transform = `rotate(${i * 30}deg)`;
+                segment.style.transform = `rotate(${angle}deg) translate(0, -100px)`;
                 const symbol = document.createElement('div');
                 symbol.className = 'symbol';
                 symbol.innerText = symbols[i];
+                symbol.style.transform = `rotate(${angle}deg)`;
                 segment.appendChild(symbol);
                 circle.appendChild(segment);
             }
@@ -107,9 +116,9 @@
             const angle = direction === 'left' ? 30 : -30;
 
             segments.forEach(segment => {
-                const currentRotation = segment.style.transform.match(/rotate\((\d+)deg\)/);
+                const currentRotation = segment.style.transform.match(/rotate\((\d+)deg\) translate/);
                 const newRotation = (parseInt(currentRotation[1]) + angle) % 360;
-                segment.style.transform = `rotate(${newRotation}deg)`;
+                segment.style.transform = `rotate(${newRotation}deg) translate(0, -100px)`;
             });
         }
 
