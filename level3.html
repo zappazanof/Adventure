@@ -33,25 +33,27 @@
             height: 80%;
             top: 10%;
             left: 10%;
+            z-index: 1; /* Ensures circle2 is on top of circle1 */
         }
         #circle3 {
             width: 60%;
             height: 60%;
             top: 20%;
             left: 20%;
+            z-index: 2; /* Ensures circle3 is on top of circle2 */
         }
         .segment {
             position: absolute;
             width: 100%;
             height: 100%;
-            text-align: center;
             transform-origin: center;
+            text-align: center;
         }
         .symbol {
             position: absolute;
-            top: 10px; /* Adjust as needed */
+            top: -20px; /* Adjusted to move symbols closer to the edge */
             left: 50%;
-            transform: translate(-50%, -50%) rotate(0deg);
+            transform: translateX(-50%) rotate(-90deg);
             font-size: 24px;
         }
         .arrow {
@@ -82,7 +84,7 @@
 </head>
 <body>
     <div class="lock-container">
-        <h1>Rätsel mit Drehscheiben test 4</h1>
+        <h1>Rätsel mit Drehscheiben test 5</h1>
         <div class="circle-container">
             <div id="circle1" class="circle"></div>
             <div id="circle2" class="circle"></div>
@@ -103,60 +105,57 @@
         <button onclick="checkCombination()">Eingeben</button>
         <p id="message"></p>
     </div>
+</body>
+
     <script>
-        const symbols = ["✷", "✦", "✪", "✵", "❖", "✧", "✸", "✪", "❉", "✵", "✦", "✷"];
-        const correctCombination = ["✷", "✪", "❉"];
+const symbols = ["✷", "✦", "✪", "✵", "❖", "✧", "✸", "✪", "❉", "✵", "✦", "✷"];
+const correctCombination = ["✷", "✪", "❉"];
 
-        function createCircle(elementId) {
-            const circle = document.getElementById(elementId);
-            for (let i = 0; i < 12; i++) {
-                const angle = i * 30;
-                const segment = document.createElement('div');
-                segment.className = 'segment';
-                // Set the position and rotation for each segment
-                segment.style.transform = `rotate(${angle}deg) translate(0, -110px)`; // Adjusted for better positioning
-                const symbol = document.createElement('div');
-                symbol.className = 'symbol';
-                symbol.innerText = symbols[i];
-                // Adjust the rotation of the symbol to keep it upright
-                symbol.style.transform = `translate(-50%, -50%) rotate(${-angle}deg)`;
-                segment.appendChild(symbol);
-                circle.appendChild(segment);
-            }
-        }
+function createCircle(elementId) {
+    const circle = document.getElementById(elementId);
+    for (let i = 0; i < 12; i++) {
+        const angle = i * 30;
+        const segment = document.createElement('div');
+        segment.className = 'segment';
+        segment.style.transform = `rotate(${angle}deg) translate(0, -110px)`; // Adjusted for better positioning
+        const symbol = document.createElement('div');
+        symbol.className = 'symbol';
+        symbol.innerText = symbols[i];
+        symbol.style.transform = `rotate(${-angle}deg)`; // Fixed rotation to keep symbols upright
+        segment.appendChild(symbol);
+        circle.appendChild(segment);
+    }
+}
 
-        function rotateCircle(circleNumber, direction) {
-            const circle = document.getElementById(`circle${circleNumber}`);
-            const segments = circle.querySelectorAll('.segment');
-            const angle = direction === 'left' ? 30 : -30;
+function rotateCircle(circleNumber, direction) {
+    const circle = document.getElementById(`circle${circleNumber}`);
+    const segments = circle.querySelectorAll('.segment');
+    const angle = direction === 'left' ? 30 : -30;
 
-            segments.forEach(segment => {
-                const currentRotation = segment.style.transform.match(/rotate\(([-\d]+)deg\)/);
-                const newRotation = (parseInt(currentRotation[1]) + angle) % 360;
-                // Adjust the position and rotation for each segment
-                segment.style.transform = `rotate(${newRotation}deg) translate(0, -110px)`;
-            });
-        }
+    segments.forEach(segment => {
+        const currentRotation = segment.style.transform.match(/rotate\(([-\d]+)deg\)/);
+        const newRotation = (parseInt(currentRotation[1]) + angle) % 360;
+        segment.style.transform = `rotate(${newRotation}deg) translate(0, -110px)`;
+    });
+}
 
-        function checkCombination() {
-            const circles = [document.getElementById('circle1'), document.getElementById('circle2'), document.getElementById('circle3')];
-            const combination = circles.map(circle => {
-                // Find the segment at the 12 o'clock position (rotate(0deg))
-                const symbol = circle.querySelector('.segment[style*="rotate(0deg)"] .symbol');
-                return symbol ? symbol.innerText : null;
-            });
+function checkCombination() {
+    const circles = [document.getElementById('circle1'), document.getElementById('circle2'), document.getElementById('circle3')];
+    const combination = circles.map(circle => {
+        const symbol = circle.querySelector('.segment[style*="rotate(0deg)"] .symbol');
+        return symbol ? symbol.innerText : null;
+    });
 
-            // Check if the combination matches the correct combination
-            const correct = combination.every((symbol, index) => symbol === correctCombination[index]);
-            document.getElementById('message').innerText = correct ? "Korrekte Kombination! Die Kiste öffnet sich." : "Falsche Kombination. Versuche es erneut.";
-        }
+    const correct = combination.every((symbol, index) => symbol === correctCombination[index]);
+    document.getElementById('message').innerText = correct ? "Korrekte Kombination! Die Kiste öffnet sich." : "Falsche Kombination. Versuche es erneut.";
+}
 
-        // Initialize the circles when the document is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            createCircle('circle1');
-            createCircle('circle2');
-            createCircle('circle3');
-        });
+document.addEventListener('DOMContentLoaded', () => {
+    createCircle('circle1');
+    createCircle('circle2');
+    createCircle('circle3');
+});
+
     </script>
 </body>
 </html>
