@@ -51,9 +51,9 @@
         }
         .symbol {
             position: absolute;
-            top: 50%;  /* Adjust to center vertically */
+            top: -20px;
             left: 50%;
-            transform: translate(-50%, -50%) rotate(0deg);  /* Center and correct rotation */
+            transform: translateX(-50%) rotate(0deg);
             font-size: 24px;
         }
         .arrow {
@@ -115,11 +115,11 @@
                 const angle = i * 30;
                 const segment = document.createElement('div');
                 segment.className = 'segment';
-                segment.style.transform = `rotate(${angle}deg) translate(0, -110px)`;
+                segment.style.transform = `rotate(${angle}deg) translate(0, -130px)`; // Adjusted for better positioning
                 const symbol = document.createElement('div');
                 symbol.className = 'symbol';
                 symbol.innerText = symbols[i];
-                symbol.style.transform = `rotate(${-angle}deg)`;
+                symbol.style.transform = `rotate(${-angle}deg)`; // Fixed rotation to keep symbols upright
                 segment.appendChild(symbol);
                 circle.appendChild(segment);
             }
@@ -133,7 +133,7 @@
             segments.forEach(segment => {
                 const currentRotation = segment.style.transform.match(/rotate\(([-\d]+)deg\)/);
                 const newRotation = (parseInt(currentRotation[1]) + angle) % 360;
-                segment.style.transform = `rotate(${newRotation}deg) translate(0, -110px)`;
+                segment.style.transform = `rotate(${newRotation}deg) translate(0, -130px)`;
             });
         }
 
